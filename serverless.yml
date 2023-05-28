@@ -1,0 +1,22 @@
+org: rolteame
+app: aws-node-http-api-new
+service: aws-node-http-new
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+
+plugins:
+- serverless-plugin-warmup
+
+functions:
+  api:
+    warmup: true
+    handler: index.handler
+    events:
+    - httpApi:
+        path: /
+        method: post
+
